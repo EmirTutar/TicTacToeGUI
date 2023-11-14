@@ -4,15 +4,15 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Game {
-    private String[] gameBoard = new String[9];
+    private char[] gameBoard = new char[9];
     private int counter = 1;
-    private final String userSymbol = "X";
-    private final String computerSymbol = "Y";
+    private final char userSymbol = 'X';
+    private final char computerSymbol = 'Y';
 
     public Game() {
     }
 
-    public String playRound(int addToCunter) {
+    public char playRound(int addToCunter) {
 
         if (this.counter % 2 == 0) {
             System.out.println(counter);
@@ -26,9 +26,9 @@ public class Game {
 
     }
 
-    public String changeArrayOnClick(int buttonNumber) {
-        if (gameBoard[buttonNumber] == null) {
-            String playerSymbol = playRound(1);
+    public char changeArrayOnClick(int buttonNumber) {
+        if (gameBoard[buttonNumber] == 0) {
+            char playerSymbol = playRound(1);
             gameBoard[buttonNumber] = playerSymbol;
             System.out.println(Arrays.toString(gameBoard));
             return playerSymbol;
@@ -39,12 +39,61 @@ public class Game {
             return userSymbol;
         }
     }
+    public boolean checkWinner() {
+        // Check rows
+        for (int i = 0; i < 9; i += 3) {
+            if (gameBoard[i] != 0 && gameBoard[i] == gameBoard[i + 1] && gameBoard[i] == gameBoard[i + 2]) {
+                return true;
+            }
+        }
 
-    public String[] getGameBoard() {
+        // Check columns
+        for (int i = 0; i < 3; i++) {
+            if (gameBoard[i] != 0 && gameBoard[i] == gameBoard[i + 3] && gameBoard[i] == gameBoard[i + 6]) {
+                return true;
+            }
+        }
+
+        // Check diagonals
+        if (gameBoard[0] != 0 && gameBoard[0] == gameBoard[4] && gameBoard[0] == gameBoard[8]) {
+            return true;
+        }
+        if (gameBoard[2] != 0 && gameBoard[2] == gameBoard[4] && gameBoard[2] == gameBoard[6]) {
+            return true;
+        }
+
+
+        return false;
+
+    }
+    public boolean checkDraw() {
+        if (!checkWinner()) {
+            for (char symbol : gameBoard) {
+                if (symbol == 0) {
+                    // Found an empty space, game is not a draw
+                    return false;
+                }
+            }
+            // No empty spaces found, the game is a draw
+            return true;
+        }
+        return false;
+    }
+
+    public boolean endGame() {
+        if (checkWinner()) {
+            System.out.println("game Over");
+            return true;
+        } return false;
+    }
+
+
+
+    public char[] getGameBoard() {
         return gameBoard;
     }
 
-    public void setGameBoard(String[] gameBoard) {
+    public void setGameBoard(char[] gameBoard) {
         this.gameBoard = gameBoard;
     }
 }
