@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="500.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="57.0" layoutY="186.0" prefHeight="385.0" prefWidth="394.0" style="-fx-background-color: black;" />
        <GridPane hgap="5.0" layoutX="52.0" layoutY="174.0" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: transparent;" vgap="5.0">
@@ -72,5 +72,10 @@
             <Font name="Lato Black" size="24.0" />
          </font>
       </Label>
+      <Button id="resetGameButton" fx:id="resetGameButton" layoutX="2.0" layoutY="591.0" mnemonicParsing="false" onAction="#resetGameButtonOnAction" prefHeight="59.0" prefWidth="500.0" style="-fx-background-color: White;" stylesheets="@style.css" text="Reset Game">
+         <font>
+            <Font name="Lato Black" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

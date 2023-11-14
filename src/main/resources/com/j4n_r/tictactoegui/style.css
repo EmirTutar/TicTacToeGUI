@@ -6,5 +6,8 @@
 
 .button:hover {
   -fx-background-color: #eee;
+}
 
+#resetGameButton:hover {
+   -fx-font-size: 25;
 }

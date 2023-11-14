@@ -5,8 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class Controller extends Game {
-    @FXML
-    private Label welcomeText;
 
     @FXML
     private Button button0;
@@ -30,131 +28,86 @@ public class Controller extends Game {
     private Label winnerLabel;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private Button[] buttons;
+
+    @FXML
+    protected void initButtonArray() {
+        buttons = new Button[]{button0, button1, button2, button3, button4, button5, button6, button7, button8};
+    }
+
+    @FXML
+    protected void onButtonClick(int buttonNumber, Button button) {
+        button.setText(String.valueOf(changeArrayOnClick(buttonNumber)));
+
+        if (endGame()) {
+            button.setDisable(true);
+            winnerLabel.setText(Character.toString(checkForWinnerSymbol()) + " won the game!!!");
+        }
+
+        if (checkDraw()) {
+            button.setDisable(true);
+            winnerLabel.setText("It's a draw");
+        }
     }
 
     @FXML
     protected void button0OnAction() {
-        button0.setText(String.valueOf(String.valueOf(changeArrayOnClick(0))));
-        if (endGame()) {
-            button0.setDisable(true);
-            winnerLabel.setText("Game Over");
-        }
-        if (checkDraw()) {
-            button0.setDisable(true);
-            winnerLabel.setText("Its a draw");
-        }
+        onButtonClick(0, button0);
     }
-
 
     @FXML
     protected void button1OnAction() {
-        button1.setText(String.valueOf(changeArrayOnClick(1)));
-        if (endGame()) {
-            button1.setDisable(true);
-            winnerLabel.setText("Game Over");
-        }
-        if (checkDraw()) {
-            button0.setDisable(true);
-            winnerLabel.setText("Its a draw");
-        }
+        onButtonClick(1, button1);
     }
 
     @FXML
     protected void button2OnAction() {
-
-        button2.setText(String.valueOf(changeArrayOnClick(2)));
-        if (endGame()) {
-            button2.setDisable(true);
-            winnerLabel.setText("Game Over");
-        }
+        onButtonClick(2, button2);
     }
 
     @FXML
     protected void button3OnAction() {
-        button3.setText(String.valueOf(changeArrayOnClick(3)));
-        if (endGame()) {
-            button3.setDisable(true);
-            winnerLabel.setText("Game Over");
-        }
-        if (checkDraw()) {
-            button0.setDisable(true);
-            winnerLabel.setText("Its a draw");
-        }
+        onButtonClick(3, button3);
     }
 
     @FXML
     protected void button4OnAction() {
-
-        button4.setText(String.valueOf(changeArrayOnClick(4)));
-        if (endGame()) {
-            button4.setDisable(true);
-            winnerLabel.setText("Game Over");
-        }
-        if (checkDraw()) {
-            button0.setDisable(true);
-            winnerLabel.setText("Its a draw");
-        }
+        onButtonClick(4, button4);
     }
 
     @FXML
     protected void button5OnAction() {
-
-        button5.setText(String.valueOf(changeArrayOnClick(5)));
-        if (endGame()) {
-            button5.setDisable(true);
-            winnerLabel.setText("Game Over");
-
-        }
-        if (checkDraw()) {
-            button0.setDisable(true);
-            winnerLabel.setText("Its a draw");
-        }
+        onButtonClick(5, button5);
     }
 
     @FXML
     protected void button6OnAction() {
-
-        button6.setText(String.valueOf(changeArrayOnClick(6)));
-        if (endGame()) {
-            button6.setDisable(true);
-            winnerLabel.setText("Game Over");
-        }
-        if (checkDraw()) {
-            button0.setDisable(true);
-            winnerLabel.setText("Its a draw");
-        }
+        onButtonClick(6, button6);
     }
 
     @FXML
     protected void button7OnAction() {
-
-        button7.setText(String.valueOf(changeArrayOnClick(7)));
-        if (endGame()) {
-            button7.setDisable(true);
-            winnerLabel.setText("Game Over");
-        }
-        if (checkDraw()) {
-            button0.setDisable(true);
-            winnerLabel.setText("Its a draw");
-        }
+        onButtonClick(7, button7);
     }
 
     @FXML
     protected void button8OnAction() {
-
-        button8.setText(String.valueOf(changeArrayOnClick(8)));
-        if (endGame()) {
-            button8.setDisable(true);
-            winnerLabel.setText("Game Over");
-        }
-        if (checkDraw()) {
-            button0.setDisable(true);
-            winnerLabel.setText("Its a draw");
-        }
-
+        onButtonClick(8, button8);
     }
 
+    @FXML
+    protected void setWinnerLabel() {
+        winnerLabel.setText(Character.toString(checkForWinnerSymbol()) + " won the game!!!");
+    }
 
+    @FXML
+    protected void resetGameButtonOnAction() {
+        resetGame();
+        initButtonArray();
+        for (Button button : buttons) {
+            button.setText("");
+            button.setDisable(false);
+            winnerLabel.setText("");
+        }
+    }
 }

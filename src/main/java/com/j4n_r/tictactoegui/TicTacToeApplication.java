@@ -14,7 +14,7 @@ public class TicTacToeApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(TicTacToeApplication.class.getResource("ticTacToe.fxml"));
         Controller controller = new Controller();
         fxmlLoader.setController(controller);
-        Scene scene = new Scene(fxmlLoader.load(), 500, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 500, 675);
         stage.setTitle("TicTacToe");
         stage.setScene(scene);
         stage.show();
