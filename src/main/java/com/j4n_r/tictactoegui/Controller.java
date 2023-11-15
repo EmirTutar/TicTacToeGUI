@@ -26,9 +26,16 @@ public class Controller extends Game {
     private Button button8;
     @FXML
     private Label winnerLabel;
+    @FXML
+    private Label scoreXLabel;
+    @FXML
+    private Label scoreYLabel;
 
     @FXML
+    private Button resetScoreButton;
+    @FXML
     private Button[] buttons;
+
 
     @FXML
     protected void initButtonArray() {
@@ -38,8 +45,8 @@ public class Controller extends Game {
     @FXML
     protected void onButtonClick(int buttonNumber, Button button) {
         button.setText(String.valueOf(changeArrayOnClick(buttonNumber)));
-
         if (endGame()) {
+            setScoreLabel();
             button.setDisable(true);
             winnerLabel.setText(Character.toString(checkForWinnerSymbol()) + " won the game!!!");
         }
@@ -109,5 +116,22 @@ public class Controller extends Game {
             button.setDisable(false);
             winnerLabel.setText("");
         }
+    }
+
+    @FXML
+    protected void resetScoreButtonOnAction() {
+        resetGameButtonOnAction();
+        resetScore();
+        scoreXLabel.setText(Integer.toString(getScoreX()));
+        scoreYLabel.setText(Integer.toString(getScoreY()));
+    }
+    protected void setScoreLabel() {
+        setScore();
+        scoreXLabel.setText(Integer.toString(getScoreX()));
+        scoreYLabel.setText(Integer.toString(getScoreY()));
+    }
+    @FXML
+    protected void playCPUButtonOnAction() {
+
     }
 }

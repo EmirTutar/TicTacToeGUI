@@ -7,6 +7,8 @@ public class Game {
     private int counter = 1;
     private final char userSymbol = 'X';
     private final char computerSymbol = 'Y';
+    private int scoreX = 0;
+    private int scoreY = 0;
 
     public Game() {
     }
@@ -110,9 +112,20 @@ public class Game {
         } return false;
     }
 
+    public void setScore() {
+        if (checkForWinnerSymbol() == 'X') {
+            scoreX++;
+        } else scoreY++;
+    }
+
     public void resetGame() {
         counter = 1;
         Arrays.fill(gameBoard, '\0');
+    }
+
+    public void resetScore() {
+        scoreX = 0;
+        scoreY = 0;
     }
 
     public char[] getGameBoard() {
@@ -121,5 +134,23 @@ public class Game {
 
     public void setGameBoard(char[] gameBoard) {
         this.gameBoard = gameBoard;
+    }
+
+
+
+    public int getScoreX() {
+        return scoreX;
+    }
+
+    public int getScoreY() {
+        return scoreY;
+    }
+
+    public void setScoreX(int scoreX) {
+        this.scoreX = scoreX;
+    }
+
+    public void setScoreY(int scoreY) {
+        this.scoreY = scoreY;
     }
 }
