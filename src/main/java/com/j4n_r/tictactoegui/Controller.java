@@ -45,9 +45,12 @@ public class Controller extends Game {
     @FXML
     protected void onButtonClick(int buttonNumber, Button button) {
         button.setText(String.valueOf(changeArrayOnClick(buttonNumber)));
+        button.setDisable(true);
         if (endGame()) {
             setScoreLabel();
-            button.setDisable(true);
+            for (Button but: buttons) {
+                but.setDisable(true);
+            }
             winnerLabel.setText(Character.toString(checkForWinnerSymbol()) + " won the game!!!");
         }
 
