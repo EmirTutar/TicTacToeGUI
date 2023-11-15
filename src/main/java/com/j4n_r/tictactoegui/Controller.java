@@ -44,8 +44,14 @@ public class Controller extends Game {
 
     @FXML
     protected void onButtonClick(int buttonNumber, Button button) {
+        initButtonArray();
         button.setText(String.valueOf(changeArrayOnClick(buttonNumber)));
         button.setDisable(true);
+        checkEndGame();
+
+    }
+
+    protected void checkEndGame() {
         if (endGame()) {
             setScoreLabel();
             for (Button but: buttons) {
@@ -55,7 +61,9 @@ public class Controller extends Game {
         }
 
         if (checkDraw()) {
-            button.setDisable(true);
+            for (Button but: buttons) {
+                but.setDisable(true);
+            }
             winnerLabel.setText("It's a draw");
         }
     }
@@ -113,7 +121,6 @@ public class Controller extends Game {
     @FXML
     protected void resetGameButtonOnAction() {
         resetGame();
-        initButtonArray();
         for (Button button : buttons) {
             button.setText("");
             button.setDisable(false);

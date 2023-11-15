@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Game {
     private char[] gameBoard = new char[9];
-    private int counter = 1;
+    private static int counter = 1;
     private final char userSymbol = 'X';
     private final char computerSymbol = 'Y';
     private int scoreX = 0;
@@ -15,7 +15,7 @@ public class Game {
 
     public char playRound(int addToCunter) {
 
-        if (this.counter % 2 == 0) {
+        if (counter % 2 == 0) {
             System.out.println(counter);
             counter+= addToCunter;
             return userSymbol;
@@ -136,7 +136,9 @@ public class Game {
         this.gameBoard = gameBoard;
     }
 
-
+    public static int getCounter(){
+        return counter;
+    }
 
     public int getScoreX() {
         return scoreX;
